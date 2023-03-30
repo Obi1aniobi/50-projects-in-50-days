@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+
+* {
+    box-sizing: border-box; /*so that if we add any border or any padding, it doesnt affect the width*/
+}
+
+body {
+    font-family: 'Muli', sans-serif;
+    display: flex; /*because we want to center everything*/
+    margin: 0px;
+  
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+}
+.container {
+    display: flex;
+    flex-direction: row;
+    width: 90vw;
+}
+
+/*vh- viewport height*/
+/*vw- viewport width*/
+
+.panel {
+    background-size: auto 100;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 80vh;
+    border-radius: 50px;
+    color: white;
+    cursor: pointer;
+    flex: 0.5;
+    margin: 10px;
+    position: relative;
+    transition: flex 0.7s ease-in;
+    
+}
+
+
+/**/
+.panel h3 {  
+    font-size: 24px;
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    margin: 0;
+    opacity: 0; /*only the h3 to show if it is active*/
+
+}
+
+.panel.active { /*if the panel div has an active class, we change the flex form 0.5 to 5 */
+    flex: 5;
+}
+
+.panel.active h3 { /* if the panel is active, set the opacity to one if it is active*/
+    opacity: 1;
+    transition: opacity 0.3s ease-in 0.4s; 
+}
+
+/*if the screen is really small, we show 3 instead of 5 of the cards*/
+/*media query of 480px means that any styles that are in the media query will only take effect if the screen is under 480px */
+
+@media(max-width: 480px) {
+    .container {
+        width: 100vw; /*it takes up a little more room and gives us some extra space*/
+    }
+
+    .panel:nth-of-type(4), .panel:nth-of-type(5){
+        display: none
+    }
+}
